@@ -33,9 +33,16 @@ resource "aws_instance" "webserver" {
   subnet_id                   = aws_subnet.awslab_subnet_public.id
   vpc_security_group_ids      = [aws_security_group.webserver_sg.id]
 
+  user_data_replace_on_change = true
+  user_data = <<-EOT
+  #!/bin/bash
+  yum install -y nc nmap
+  EOT
+
   tags = {
     Name = "webserver"
   }
+
 }
 
 resource "aws_instance" "dbserver" {
