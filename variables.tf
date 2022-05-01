@@ -1,7 +1,7 @@
 variable "region" {
   default = {
-    dev = "us-east-1"
-    qa = ""
+    dev  = "us-east-1"
+    qa   = ""
     prod = ""
   }
 }
